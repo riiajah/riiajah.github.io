@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontak Kami</title>
+    <style>
+        body{
+      font-family: Inter, UI-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color:#e9f0ff;
+      overflow:hidden;
+      background: radial-gradient(ellipse at bottom, #0b1630 0%, #03040a 70%);
+    }/* Canvas fullscreen */
+canvas{position:fixed;inset:0;z-index:0;display:block}
+        img{
+  width: 200px;
+  display: block;
+  margin: auto;
+}
+        .kontak-container {
+            width: 80%;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: ;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .kontak-container h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .kontak-info {
+            margin-bottom: 20px;
+        }
+        
+        .kontak-info p {
+            margin-bottom: 10px;
+        }
+        
+        .kontak-form {
+            margin-top: 20px;
+        }
+        
+        .kontak-form input, .kontak-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        .kontak-form button[type="submit"] {
+            padding: 10px 20px;
+            background-color: #00698f;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .kontak-form button[type="submit"]:hover {
+            background-color: #00567f;
+        }
+    </style>
+</head>
+<body>
+    <div class="kontak-container">
+        <h1>Kontak Kami</h1>
+        <img src="images (1).jpeg" alt="foto sekolah">
+        <div class="kontak-info">
+            <p>Alamat: Jalan Bima II No.3, RT.8/RW.7, Cijantung, Pasar Rebo, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13770</p>
+            <p>Telepon: 085771673814</p>
+            <p>Email: ariapriansyah818@gmail.com</p>
+        </div>
+        <form class="kontak-form">
+            <input type="text" placeholder="Nama" required>
+            <input type="email" placeholder="Email" required>
+            <textarea placeholder="Pesan" required></textarea>
+            <button type="submit">Kirim</button>
+        </form>
+    </div>
+</body>
+</html>
