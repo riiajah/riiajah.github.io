@@ -1,1 +1,250 @@
 
+<DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMK Malahayati - Profil Sekolah</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* CSS Dasar & Efek Bintang Jatuh */
+        :root {
+            --primary-color: #ff9800; /* Oranye/Emas, Khas Malahayati */
+            --secondary-color: #00bcd4; /* Biru terang */
+            --dark-color: #121212; /* Hampir Hitam */
+            --light-color: #f8f9fa;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            line-height: 1.6; 
+            color: var(--light-color); 
+            background-color: var(--dark-color); 
+            overflow-x: hidden; 
+            position: relative;
+        }
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 20px 0; }
+        
+        /* Efek Bintang Jatuh (Sama seperti sebelumnya) */
+        .star { position: absolute; width: 2px; height: 2px; background: white; border-radius: 50%; opacity: 0; box-shadow: 0 0 5px white, 0 0 10px rgba(255, 255, 255, 0.5); animation: fall 5s linear infinite; z-index: 1; }
+        @keyframes fall { 
+            0% { transform: rotate(-45deg) translateY(0); opacity: 0; } 
+            10% { opacity: 1; } 
+            70% { opacity: 1; } 
+            100% { transform: rotate(-45deg) translateY(200vh); opacity: 0; } 
+        }
+        .star:nth-child(1) { top: 10%; left: 80%; animation-delay: 0s; width: 3px; height: 3px; }
+        .star:nth-child(2) { top: 50%; left: 30%; animation-delay: 1.5s; }
+        .star:nth-child(3) { top: 5%; left: 50%; animation-delay: 3s; width: 4px; height: 4px; }
+        .star:nth-child(4) { top: 80%; left: 10%; animation-delay: 5s; }
+        .star:nth-child(5) { top: 20%; left: 60%; animation-delay: 2s; width: 2.5px; height: 2.5px; }
+
+        /* Navigasi */
+        header { background-color: rgba(30, 30, 30, 0.95); box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); position: sticky; top: 0; z-index: 1000; }
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; }
+        .logo a { font-size: 1.8em; font-weight: 700; color: var(--primary-color); text-decoration: none; }
+        .nav-links a { text-decoration: none; color: var(--light-color); margin-left: 25px; font-weight: 600; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--primary-color); }
+
+        /* Hero Section */
+        #hero { 
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('placeholder-school.jpg') no-repeat center center/cover; 
+            color: white; 
+            padding: 100px 0; 
+            text-align: center; 
+            position: relative;
+            z-index: 5;
+        }
+        #hero h1 { font-size: 3em; margin-bottom: 10px; }
+        #hero p { font-size: 1.2em; margin-bottom: 30px; }
+        
+        /* Profil Sekolah */
+        #profil-sekolah { padding: 60px 0; background-color: #1a1a1a; }
+        #profil-sekolah h2 { text-align: center; margin-bottom: 40px; color: var(--primary-color); }
+        .profil-content { display: flex; gap: 40px; align-items: flex-start; }
+        .profil-text { flex: 2; }
+        .profil-image { flex: 1; text-align: center; }
+        .profil-image img { width: 100%; max-width: 300px; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); }
+        .visi-misi { margin-top: 30px; }
+        .visi-misi h3 { color: var(--secondary-color); margin-top: 20px; border-bottom: 2px solid #333; padding-bottom: 5px; }
+        .visi-misi ul { list-style: none; padding-left: 0; margin-top: 10px; }
+        .visi-misi ul li { margin-bottom: 10px; position: relative; padding-left: 25px; }
+        .visi-misi ul li::before { content: "\f00c"; font-family: "Font Awesome 6 Free"; font-weight: 900; color: var(--primary-color); position: absolute; left: 0; top: 0; }
+
+
+        /* Ringkasan Keunggulan */
+        #keunggulan { padding: 60px 0; text-align: center; background-color: #1f1f1f; }
+        #keunggulan h2 { margin-bottom: 40px; color: var(--light-color); }
+        .keunggulan-grid { display: flex; justify-content: space-around; gap: 20px; flex-wrap: wrap; }
+        .keunggulan-item { width: 30%; min-width: 250px; background: #2c2c2c; 
+            padding: 30px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); transition: transform 0.3s; }
+        .keunggulan-item:hover { transform: translateY(-5px); }
+        .keunggulan-item i { font-size: 2.5em; color: var(--primary-color); margin-bottom: 15px; }
+        .keunggulan-item h3 { margin-bottom: 10px; color: var(--primary-color);}
+        .keunggulan-item p { color: #ccc;}
+
+        /* Digital Showcase (Galeri) */
+        #showcase { padding: 60px 0; text-align: center; }
+        #showcase h2 { margin-bottom: 40px; color: var(--light-color); }
+        .showcase-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .showcase-item { background: #2c2c2c; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); text-align: left; }
+        .showcase-item img { width: 100%; height: 200px; object-fit: cover; }
+        .showcase-content { padding: 15px; }
+        .showcase-content h4 { color: var(--secondary-color); margin-bottom: 5px; }
+        .showcase-content p { font-size: 0.9em; color: #adb5bd; }
+
+        /* Kontak */
+        #kontak { background-color: #1f1f1f; color: white; padding: 60px 0; text-align: center; }
+        #kontak h2 { margin-bottom: 30px; }
+        .kontak-info p { margin-bottom: 10px; font-size: 1.1em; }
+        .kontak-info a { color: var(--primary-color); text-decoration: none; }
+        
+        /* Footer */
+        footer { background-color: #0d0d0d; color: #adb5bd; padding: 20px 0; text-align: center; font-size: 0.9em; }
+
+        /* Media Queries untuk Responsif */
+        @media (max-width: 768px) {
+            .navbar { flex-direction: column; text-align: center; }
+            .nav-links { margin-top: 15px; }
+            .nav-links a { margin: 0 10px; display: inline-block; padding: 5px 0; }
+            .keunggulan-item { width: 100%; margin-bottom: 20px; }
+            #hero h1 { font-size: 2.5em; }
+            .profil-content { flex-direction: column; }
+            .profil-image { order: -1; margin-bottom: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+
+    <header>
+        <div class="container navbar">
+            <div class="logo">
+                <a href="#">SMK Malahayati</a>
+            </div>
+            <nav class="nav-links">
+                <a href="#hero">Beranda</a>
+                <a href="#profil-sekolah">Profil Sekolah</a>
+                <a href="#keunggulan">Kompetensi</a>
+                <a href="#showcase">Karya Siswa</a>
+                <a href="#kontak">Kontak</a>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero">
+        <div class="container">
+            <h1>SMK Malahayati: Mencetak Tenaga Kerja Profesional</h1>
+            <p>Unggul dalam Teknologi dan Kejuruan, Siap Kerja dan Berwirausaha.</p>
+        </div>
+    </section>
+
+    <section id="profil-sekolah">
+        <div class="container">
+            <h2>Profil Sekolah & Filosofi Kami</h2>
+            <div class="profil-content">
+                <div class="profil-image">
+                    <img src="logo.jfif" alt="Kepala Sekolah">
+                    <p style="margin-top: 10px; font-style: italic; color: #aaa;">"Bersama Malahayati, Wujudkan Impian Karirmu."</p>
+                </div>
+                <div class="profil-text">
+                    <p>SMK Malahayati didirikan pada tahun 1995 dengan semangat untuk menyediakan pendidikan kejuruan yang relevan dengan kebutuhan industri. Kami berkomitmen untuk menghasilkan lulusan yang tidak hanya memiliki keahlian teknis, tetapi juga memiliki karakter kuat, disiplin, dan etos kerja tinggi, sejalan dengan nilai-nilai pahlawan Laksamana Malahayati.</p>
+                    
+                    <div class="visi-misi">
+                        <h3>Visi</h3>
+                        <p>Menjadi Sekolah Menengah Kejuruan unggulan di Indonesia, pelopor inovasi kejuruan, dan pencetak wirausahawan muda berdaya saing global.</p>
+                        
+                        <h3>Misi</h3>
+                        <ul>
+                            <li>Menyelenggarakan pendidikan berbasis praktik industri dan teknologi terapan.</li>
+                            <li>Meningkatkan kompetensi siswa melalui sertifikasi profesional.</li>
+                            <li>Membangun kemitraan yang erat dengan dunia usaha dan dunia industri (DUDI).</li>
+                            <li>Membentuk karakter siswa yang religius, disiplin, dan bertanggung jawab.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="keunggulan">
+        <div class="container">
+            <h2>Kompetensi Keahlian Kami</h2>
+            <div class="keunggulan-grid">
+                <div class="keunggulan-item">
+                    <i class="fas fa-network-wired"></i> <h3>TJKT (Teknik Jaringan Komputer dan Telekomunikasi)</h3>
+                    <p>Fokus pada instalasi jaringan, sistem operasi, keamanan siber, dan teknologi telekomunikasi.</p>
+                </div>
+
+                <div class="keunggulan-item">
+                    <i class="fas fa-handshake"></i> <h3>MPLB (Manajemen Perkantoran dan Layanan Bisnis)</h3>
+                    <p>Mempelajari administrasi modern, kearsipan digital, layanan pelanggan, dan komunikasi bisnis.</p>
+                </div>
+                
+                <div class="keunggulan-item">
+                    <i class="fas fa-calculator"></i> <h3>AKL (Akuntansi dan Keuangan Lembaga)</h3>
+                    <p>Keahlian dalam pembukuan, laporan keuangan, perpajakan, dan pengelolaan transaksi lembaga.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="showcase">
+        <div class="container">
+            <h2>Digital Showcase: Proyek Unggulan Siswa ✨</h2>
+            <div class="showcase-grid">
+                
+                <div class="showcase-item">
+                    <div class="showcase-content">
+                        <h4>Instalasi Jaringan & Keamanan Siber</h4>
+                        <p>Proyek konfigurasi jaringan skala kecil dan uji penetrasi keamanan (TJKT).</p>
+                    </div>
+                </div>
+
+                <div class="showcase-item">
+                    <div class="showcase-content">
+                        <h4>Simulasi Layanan Bisnis & Kearsipan Digital</h4>
+                        <p>Praktik pengelolaan dokumen dan front office menggunakan aplikasi terkini (MPLB).</p>
+                    </div>
+                </div>
+
+                <div class="showcase-item">
+                    <div class="showcase-content">
+                        <h4>Penyusunan Laporan Keuangan UKM</h4>
+                        <p>Proyek Akuntansi dan Keuangan Lembaga untuk usaha kecil menengah (AKL).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="kontak">
+        <div class="container">
+            <h2>Informasi Kontak & Lokasi</h2>
+            <div class="kontak-info">
+                <p><i class="fas fa-map-marker-alt"></i> Jalan Bima No.3, Cijantung, Kec. Ps. Rebo, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13770</p>
+                <p><i class="fas fa-phone"></i> (021) 8701743 </p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:smk@malahayatiislamicschool.sch.id.sch.id">smk@malahayatiislamicschool.sch.id</a></p>
+                <div style="margin-top: 20px;">
+                    <a href="#" style="color: white; margin: 0 10px;"><i class="fab fa-facebook-f fa-2x"></i></a>
+                    <a href="#" style="color: white; margin: 0 10px;"><i class="fab fa-instagram fa-2x"></i></a>
+                    <a href="#" style="color: white; margin: 0 10px;"><i class="fab fa-youtube fa-2x"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 SMK Malahayati. Hak Cipta Dilindungi.</p>
+        </div>
+    </footer>
+
+</body>
+  </html>
